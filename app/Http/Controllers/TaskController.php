@@ -62,6 +62,7 @@ class TaskController extends Controller
             'name' => $request->name,
             'desc' => $request->desc,
             'tasklist_id' => $request->tasklist_id,
+            'color' => $request->color
         ]);
 
         return redirect('/tasklists');
@@ -92,7 +93,7 @@ class TaskController extends Controller
 
     public function edit(Request $request, Task $task)
     {
-        $task->update(['name' => $request->name, 'desc' => $request->desc]);
+        $task->update(['name' => $request->name, 'desc' => $request->desc, 'color' => $request->color]);
 
         return redirect('/tasklists');
     }

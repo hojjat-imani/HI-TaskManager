@@ -72,6 +72,7 @@
                                                         </button>
                                                         <p><strong>{{$task->name}}</strong></p>
                                                         <p style="padding: 1rem">{{$task->desc}}</p>
+
                                                         <!-- Modal -->
                                                         <div id="editTaskModal{{$task->id}}" class="modal fade" role="dialog">
                                                             <div class="modal-dialog">
@@ -109,6 +110,17 @@
                                                                                     <input type="text" name="desc" id="task-desc"
                                                                                            class="form-control"
                                                                                            value="{{$task->desc}}">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="form-group">
+                                                                                <label for="task-color"
+                                                                                       class="col-sm-2 control-label text-center">color</label>
+
+                                                                                <div class="col-sm-10">
+                                                                                    <input type="color" name="color" id="task-color"
+                                                                                           class="form-control"
+                                                                                           value="#ff0000">
                                                                                 </div>
                                                                             </div>
 
@@ -156,6 +168,7 @@
                                                             </form>
                                                         @endif
                                                     </div>
+                                                    <p style="background-color:{{$task->color}};height: 1rem; width: 10rem" ></p>
                                                 </div>
                                             </div>
                                         @endif
@@ -205,6 +218,17 @@
                                                                 <input type="text" name="desc" id="task-desc"
                                                                        class="form-control"
                                                                        value=" ">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="task-color"
+                                                                   class="col-sm-2 control-label text-center">color</label>
+
+                                                            <div class="col-sm-10">
+                                                                <input type="color" name="color" id="task-color"
+                                                                       class="form-control"
+                                                                       value="#ff0000">
                                                             </div>
                                                         </div>
 

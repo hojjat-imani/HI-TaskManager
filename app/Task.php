@@ -12,7 +12,7 @@ class Task extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'desc', 'tasklist_id'];
+    protected $fillable = ['name', 'desc', 'tasklist_id', 'color'];
     
     /**
      * The attributes that should be cast to native types.
