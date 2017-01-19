@@ -2,15 +2,11 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row text-center">
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Welcome</div>
-
-                <div class="panel-body">
-                    Your Application's Landing Page.
-                </div>
-            </div>
+            <h1>Welcome to Hi-TaskManager!</h1>
+            <br/><br/><br/>
+            <p>Please Login to continue</p>
         </div>
     </div>
 </div>
