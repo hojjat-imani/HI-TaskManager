@@ -38,7 +38,7 @@
             @if(count($tasklists) > 0)
                 @for ($i = 0; $i < count($tasklists); $i++)
                     <?php $tasklist = $tasklists[$i]; ?>
-                    <div class="col col-sm-4" style="margin: 1rem">
+                    <div class="col col-sm-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <form id="deleteTaskList" action="{{url('tasklist/' . $tasklist->id)}}"
@@ -255,48 +255,15 @@
                             </div>
                         </div>
                     </div>
-                    {{--@endforeach--}}
                 @endfor
             @else
-                No task list yet.
+                <div class="text-center">
+                    <h1>No task list yet.</h1>
+                    <br/><br/>
+                    <p>Start by creating a new task list</p>
+                </div>
+
             @endif
-
-
-
-            {{--<div class="col col-lg-4 col-md-4 col-sm-6">--}}
-            {{--<div class="panel panel-default">--}}
-            {{--<div class="panel-heading">--}}
-            {{--TaskListName and AddTaskButton--}}
-            {{--</div>--}}
-            {{--<div class="panel-body">--}}
-            {{--@if(count($tasklists) > 0)--}}
-            {{--@foreach($tasklists as $tasklist)--}}
-            {{--<div class="panel panel-default">--}}
-            {{--<div class="panel-heading">--}}
-            {{--{{$tasklist->name}}--}}
-            {{--</div>--}}
-            {{--<div class="panel-body">--}}
-            {{--<div class="row">--}}
-            {{--<div class="col-sm-12">--}}
-            {{--<input type="text" form="editTask" name="desc" value="{{$task->desc}}">--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--<form id="editTask" action="{{url('task/' . $task->id)}}" method="POST">--}}
-            {{--{{csrf_field()}}--}}
-            {{--</form>--}}
-            {{--<form id="deleteTask" action="{{url('task/' . $task->id)}}" method="POST">--}}
-            {{--{{csrf_field()}}--}}
-            {{--{{method_field('DELETE')}}--}}
-            {{--</form>--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--@endforeach--}}
-            {{--@else--}}
-            {{--No task list yet.--}}
-            {{--@endif--}}
-            {{--</div>--}}
-            {{--</div>--}}
-            {{--</div>--}}
         </div>
     </div>
 @endsection
