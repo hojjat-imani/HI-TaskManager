@@ -9,7 +9,7 @@
 
 
 
-This project is done base on the intermediate tutorial of larevel(well known php framework)     [more info](laravel.com/docs/5.2/quickstart-intermediate)
+This project is done base on the intermediate tutorial of larevel(well known php framework)     [more info](https://laravel.com/docs/5.2/quickstart-intermediate)
 #####Capabilities:
  * Creating seprate boards  
  * Creating unlimited number of task lists in each board
