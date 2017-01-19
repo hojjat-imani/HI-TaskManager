@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\TaskRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -11,18 +12,21 @@ use App\Repositories\TasklistRepository;
 class TasklistController extends Controller
 {
     protected $tasklists;
+    protected $tasks;
 
-    public function __construct(TasklistRepository $tasklists)
+    public function __construct(TasklistRepository $tasklists, TaskRepository $tasks)
     {
         $this->middleware('auth');
 
         $this->tasklists = $tasklists;
+        $this->tasks = $tasks;
     }
 
     public function index(Request $request)
     {
         return view('tasklists.index', [
             'tasklists' => $this->tasklists->forUser($request->user()),
+            'tasks' => $this->tasks->forUser($request->user())
         ]);
     }
 

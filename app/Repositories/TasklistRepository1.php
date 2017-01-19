@@ -6,11 +6,10 @@
  * Time: 2:35 PM
  */
 
-use App\User;
-use App\Task;
-use App\Tasklist;
-
 namespace App\Repositories;
+
+use App\Tasklist;
+use App\User;
 
 
 class TasklistRepository

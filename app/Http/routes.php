@@ -32,9 +32,9 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/task', 'TaskController@store');
     Route::delete('/task/{task}', 'TaskController@destroy');
 
-    Route::get('/tasklist', 'TasklistController@index');
-    Route::post('/tasklist', 'TasklistController@store');
-    Route::delete('/tasklist/{tasklist}', 'TasklistController@destroy');
+    Route::get('/tasklists', 'TasklistController@index');
+    Route::post('/tasklists', 'TasklistController@store');
+    Route::delete('/tasklists/{tasklist}', 'TasklistController@destroy');
 
     Route::auth();
 
