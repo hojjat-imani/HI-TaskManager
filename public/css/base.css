@@ -1,0 +1,33 @@
+/*@media (min-width: 100px) {*/
+    /*.container-scroll > .row {*/
+        /*overflow-x: auto;*/
+        /*white-space: nowrap;*/
+    /*}*/
+    /*.container-scroll > .row > .col {*/
+        /*display: inline-block;*/
+        /*float: none;*/
+    /*}*/
+/*}*/
+
+.container-scroll{
+    /*overflow-x: auto;*/
+    /*white-space: nowrap;*/
+}
+
+.col{
+
+}
+
+.container-scroll > .row {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.container-scroll > .row  > .col {
+    display: inline-block;
+    float: none;
+}
+
+.test{
+    background-color: red;
+    color: white;
+}
