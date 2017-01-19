@@ -48,20 +48,28 @@
                                         @if($tasklist->id == $task->tasklist_id)
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
-                                                    <p class="text-primary">{{$task->name}}</p>
-                                                    <p style="padding: 1rem">{{$task->desc}}</p>
-                                                    {{--<div class="row">--}}
-                                                    {{--<div class="col-sm-12">--}}
-                                                    {{--<input type="text" form="editTask" name="desc" value="{{$task->desc}}">--}}
-                                                    {{--</div>--}}
-                                                    {{--</div>--}}
-                                                    {{--<form id="editTask" action="{{url('task/' . $task->id)}}" method="POST">--}}
-                                                    {{--{{csrf_field()}}--}}
-                                                    {{--</form>--}}
-                                                    {{--<form id="deleteTask" action="{{url('task/' . $task->id)}}" method="POST">--}}
-                                                    {{--{{csrf_field()}}--}}
-                                                    {{--{{method_field('DELETE')}}--}}
-                                                    {{--</form>--}}
+                                                    <div class="row">
+                                                        <div class="col-sm-11">
+                                                            <p class="text-primary">{{$task->name}}</p>
+                                                            <p style="padding: 1rem">{{$task->desc}}</p>
+                                                        </div>
+                                                        <div class="col-sm-1">
+                                                            <form id="deleteTask" action="{{url('task/' . $task->id)}}"
+                                                                  method="POST">
+                                                                {{csrf_field()}}
+                                                                {{method_field('DELETE')}}
+                                                                <button type="submit" class="close"
+                                                                >&times;</button>
+                                                            </form>
+                                                            <form id="deleteTask" action="{{url('editTask/' . $task->id)}}"
+                                                                  method="POST">
+                                                                {{csrf_field()}}
+                                                                {{method_field('DELETE')}}
+                                                                <button type="submit" class="close"
+                                                                ><span class="glyphicon glyphicon-edit"></span></button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endif
@@ -70,11 +78,11 @@
                                 <div class="text-center">
                                     <!-- Trigger the modal with a button -->
                                     <button type="button" class="btn btn-default" data-toggle="modal"
-                                            data-target="#addTaskModal"><i class="fa fa-btn fa-plus"></i>New Task
+                                            data-target="#addTaskModal{{$tasklist->id}}"><i class="fa fa-btn fa-plus"></i>New Task
                                     </button>
 
                                     <!-- Modal -->
-                                    <div id="addTaskModal" class="modal fade" role="dialog">
+                                    <div id="addTaskModal{{$tasklist->id}}" class="modal fade" role="dialog">
                                         <div class="modal-dialog">
 
                                             <!-- Modal content-->

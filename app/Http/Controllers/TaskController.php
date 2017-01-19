@@ -80,6 +80,6 @@ class TaskController extends Controller
 
         $task->delete();
 
-        return redirect('/tasks');
+        return redirect('/tasklists');
     }
 }
