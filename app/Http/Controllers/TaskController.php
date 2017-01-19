@@ -82,4 +82,11 @@ class TaskController extends Controller
 
         return redirect('/tasklists');
     }
+
+    public function move(Request $request, Task $task)
+    {
+        $task->update(['tasklist_id'=> $request->tasklist_id]);
+
+        return redirect('/tasklists');
+    }
 }

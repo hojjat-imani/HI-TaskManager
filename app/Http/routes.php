@@ -31,10 +31,11 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/tasks', 'TaskController@index');
     Route::post('/task', 'TaskController@store');
     Route::delete('/task/{task}', 'TaskController@destroy');
+    Route::post('/moveTaskToAnotherList/{task}', 'TaskController@move');
 
     Route::get('/tasklists', 'TasklistController@index');
-    Route::post('/tasklists', 'TasklistController@store');
-    Route::delete('/tasklists/{tasklist}', 'TasklistController@destroy');
+    Route::post('/tasklist', 'TasklistController@store');
+    Route::delete('/tasklist/{tasklist}', 'TasklistController@destroy');
 
     Route::auth();
 

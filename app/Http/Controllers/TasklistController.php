@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Tasklist;
 use App\Repositories\TasklistRepository;
 
 class TasklistController extends Controller
@@ -43,10 +44,8 @@ class TasklistController extends Controller
         return redirect('/tasklists');
     }
 
-    public function destroy(Request $request, TaskList $tasklist)
+    public function destroy(Request $request, Tasklist $tasklist)
     {
-        $this->authorize('destroy', $tasklist);
-
         $tasklist->delete();
 
         return redirect('/tasklists');

@@ -8,7 +8,7 @@
             @include('common.errors')
 
             <!-- New Task Form -->
-                <form action="{{ url('tasklists') }}" method="POST" class="form-horizontal">
+                <form action="{{ url('tasklist') }}" method="POST" class="form-horizontal">
                 {{ csrf_field() }}
 
                 <!-- Task Name -->
@@ -36,49 +36,84 @@
         <div class="row">
             <br/>
             @if(count($tasklists) > 0)
-                @foreach($tasklists as $tasklist)
-                    <div class="col col-lg-4 col-md-4 col-sm-6">
+                @for ($i = 0; $i < count($tasklists); $i++)
+                    <?php $tasklist = $tasklists[$i]; ?>
+                    <div class="col col-sm-4" style="margin: 1rem">
                         <div class="panel panel-default">
                             <div class="panel-heading">
+                                <form id="deleteTaskList" action="{{url('tasklist/' . $tasklist->id)}}"
+                                      method="POST">
+                                    {{csrf_field()}}
+                                    {{method_field('DELETE')}}
+                                    <button type="submit" class="close"
+                                    >&times;</button>
+                                </form>
                                 {{$tasklist->name}}
                             </div>
                             <div class="panel-body">
                                 @if(count($tasks) > 0)
-                                    @foreach($tasks as $task)
+                                    @for ($j = 0; $j < count($tasks); $j++)
+                                        <?php $task = $tasks[$j]; ?>
                                         @if($tasklist->id == $task->tasklist_id)
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-sm-11">
-                                                            <p class="text-primary">{{$task->name}}</p>
-                                                            <p style="padding: 1rem">{{$task->desc}}</p>
-                                                        </div>
-                                                        <div class="col-sm-1">
-                                                            <form id="deleteTask" action="{{url('task/' . $task->id)}}"
+                                                    <div>
+                                                        <form id="deleteTask" action="{{url('task/' . $task->id)}}"
+                                                              method="POST">
+                                                            {{csrf_field()}}
+                                                            {{method_field('DELETE')}}
+                                                            <button type="submit" class="close"
+                                                            >&times;</button>
+                                                        </form>
+                                                        <p class="text-primary">{{$task->name}}</p>
+                                                        <p style="padding: 1rem">{{$task->desc}}</p>
+                                                    </div>
+                                                    <div>
+                                                        @if ($i < count($tasklists) - 1)
+                                                            <form id="moveTaskRight{{$task->id}}"
+                                                                  action="{{url('moveTaskToAnotherList/' . $task->id)}}"
                                                                   method="POST">
                                                                 {{csrf_field()}}
-                                                                {{method_field('DELETE')}}
+                                                                <input type="hidden" name="tasklist_id"
+                                                                       value="{{$tasklists[$i+1]->id}}">
                                                                 <button type="submit" class="close"
-                                                                >&times;</button>
+                                                                        style="margin-right: 1rem; margin-left: 1rem"
+                                                                ><span class="glyphicon glyphicon-arrow-right"></span>
+                                                                </button>
                                                             </form>
-                                                            <form id="deleteTask" action="{{url('editTask/' . $task->id)}}"
+                                                        @endif
+                                                        <form id="deleteTask" action="{{url('editTask/' . $task->id)}}"
+                                                              method="POST">
+                                                            {{csrf_field()}}
+                                                            {{method_field('DELETE')}}
+                                                            <button type="submit" class="close"
+                                                                    style="margin-right: 1rem; margin-left: 1rem"
+                                                            ><span class="glyphicon glyphicon-edit"></span></button>
+                                                        </form>
+                                                        @if ($i > 0)
+                                                            <form id="moveTaskLeft"
+                                                                  action="{{url('moveTaskToAnotherList/' . $task->id)}}"
                                                                   method="POST">
                                                                 {{csrf_field()}}
-                                                                {{method_field('DELETE')}}
+                                                                <input type="hidden" name="tasklist_id"
+                                                                       value="{{$tasklists[$i-1]->id}}">
                                                                 <button type="submit" class="close"
-                                                                ><span class="glyphicon glyphicon-edit"></span></button>
+                                                                        style="margin-right: 1rem; margin-left: 1rem"
+                                                                ><span class="glyphicon glyphicon-arrow-left"></span>
+                                                                </button>
                                                             </form>
-                                                        </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>
                                         @endif
-                                    @endforeach
+                                    @endfor
                                 @endif
                                 <div class="text-center">
                                     <!-- Trigger the modal with a button -->
                                     <button type="button" class="btn btn-default" data-toggle="modal"
-                                            data-target="#addTaskModal{{$tasklist->id}}"><i class="fa fa-btn fa-plus"></i>New Task
+                                            data-target="#addTaskModal{{$tasklist->id}}"><i
+                                                class="fa fa-btn fa-plus"></i>New Task
                                     </button>
 
                                     <!-- Modal -->
@@ -144,7 +179,8 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    {{--@endforeach--}}
+                @endfor
             @else
                 No task list yet.
             @endif
